@@ -42,44 +42,58 @@ import processing.core.PImage;
  *    text("Score: " + score, 20, 20);
  */
 public class RainGame extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 600;
 
-    int score = 0;
-    int bucketWidth = 50;
-    int bucketHeight;
-    PImage bucket;
-    int y;
-    int x;
+	int score = 0;
+	int bucketWidth = 100;
+	int bucketHeight = 100;
+	int y = 0;
+	int x = (int)random(width);
+	int randomNumber;
+	PImage bucket;
+	// Sets the size of your canvas
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    // Sets the size of your canvas
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
+	@Override
+	public void setup() {
+		 bucket = loadImage("images/bucket.png");
+		bucket.resize(100, 100);
+	}
+	@Override
+	public void draw() {
+		background(111111);
+		fill(0, 0, 255);
+		ellipse(x,y,50, 50);
+		y+=5;
+		randomNumber=(int)random(600);
+		if (y>500) {
+			x= (int)random(600);
+			y=0;
+		}
+		image(bucket, mouseX, 500);
+		checkCatch(x);
+		
+		fill(0, 0, 0);
+		textSize(16);
+		text("Score: " + score, 20, 20);
+	}
 
-    @Override
-    public void setup() {
+	static public void main(String[] args) {
+		PApplet.main(RainGame.class.getName());
+	}
 
-    }
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
 
-    @Override
-    public void draw() {
-
-    }
-
-    static public void main(String[] args) {
-        PApplet.main(RainGame.class.getName());
-    }
-    
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
-
-    void checkCatch(int x) {
-        if (x > mouseX && x < mouseX + bucketWidth) {
-            score++;
-        } else if (score > 0) {
-            score--;
-        }
-        println("Your score is now: " + score);
-    }
+	void checkCatch(int x) {
+		if (x > mouseX && x < mouseX + bucketWidth && y==500) {
+			score++;
+		} else if (score > 0) {
+		//	score--;
+		}
+		println("Your score is now: " + score);
+	}
 }

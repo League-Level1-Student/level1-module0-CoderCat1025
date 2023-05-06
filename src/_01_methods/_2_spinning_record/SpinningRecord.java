@@ -39,12 +39,12 @@ import processing.core.PImage;
 public class SpinningRecord extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
-    int spin = 0;
+    int spin = 1;
     
     Song song = new Song("awesomeTrack.mp3");
     PImage pictureOfRecord;
     
-    pictureOfRecord = loadImage(pictureOfRecord);
+ 
     
     @Override
     public void settings() {
@@ -53,12 +53,15 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void setup() {
-        
+    	pictureOfRecord = loadImage("images/record.jpeg");
+    	setSize(600,600);
+    	image(pictureOfRecord, 600, 600);
     }
 
     @Override
     public void draw() {
-        
+        rotateImage(pictureOfRecord, 3);
+        image(pictureOfRecord, 600, 600);
     }
 
     static public void main(String[] args) {
