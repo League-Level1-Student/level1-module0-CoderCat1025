@@ -15,18 +15,26 @@ public class TooManyShapes {
 		//1. Ask the user how many sides they want their shape to be
 		String prompt = "How many sides do you want for your shape?";
 		String answer = JOptionPane.showInputDialog(prompt);
+		int sides = Integer.parseInt(answer);
 		//2. Ask the user how many shapes they want
-		JOptionPane.showInputDialog("How many shapes do you want?");
+String prompt2 = "How many shapes do you want?";
+String answer2 = JOptionPane.showInputDialog(prompt2);
+int shapeNumber = Integer.parseInt(answer2);
 		//3. Call canMakeShape() and save what is returned into a variable
-		canMakeShape(answer);
+boolean makeShape = canMakeShape(sides);
 		//4. If the shape CAN be drawn
-		
+		if (makeShape == true) {
+			int turnAngle = calculateTurnAngle(sides);
+			drawPolygons(sides, shapeNumber, turnAngle);
+		}
 			//5. Call and save what is returned from calculateTurnAngle()
 		
 			//6. Use drawPolygons() to draw your shape
 		
 		//7. If the shape CANNOT be drawn 
-			
+			if (makeShape == false) {
+				notEnoughSides();
+			}
 			//8. Call notEnoughSides() and print out what is returned 
 		
 	}
@@ -60,7 +68,7 @@ public class TooManyShapes {
 		rob.hide();
 	}
 	
-	static boolean canMakeShape(String answer) {
+	static boolean canMakeShape(int answer) {
 		if(answer >= 3) {
 			return true;
 		}

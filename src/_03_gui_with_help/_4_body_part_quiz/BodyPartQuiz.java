@@ -59,29 +59,45 @@ public class BodyPartQuiz {
 
 		// 5. Check their answer. If they guessed correctly:
 		// -- Tell them they are right and increase the score by 1
-		if (guess.equals(firstImage)) {
+		if (guess.equals("arnold")) {
 			JOptionPane.showMessageDialog(null, "You're correct!");
 			score+=1;
 		}
 			// 6. Otherwise:
 			// -- Tell them they are wrong and who the person is
 		else {
-			JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +firstImage);
+			JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +"arnold");
 		}
 			// 7. Use the showNextImage() method below to get the next image
 			showNextImage();
 
 		// 8. .... repeat 4-7 for all your images.....
 String guess2 = JOptionPane.showInputDialog("who is this?");
-if (guess2.equals(secondImage)) {
+if (guess2.equals("jack")) {
 	JOptionPane.showMessageDialog(null,  "You're correct!");
 	score+=1;
 }
 else {
-	JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +secondImage);
+	JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +"jack");
+}
+String guess3 = JOptionPane.showInputDialog("who is this?");
+if (guess3.equals("leonardo")) {
+	JOptionPane.showMessageDialog(null,  "You're correct!");
+	score+=1;
+}
+else {
+	JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +"leonardo");
+}
+String guess4 = JOptionPane.showInputDialog("who is this?");
+if (guess4.equals("morgan")) {
+	JOptionPane.showMessageDialog(null,  "You're correct!");
+	score+=1;
+}
+else {
+	JOptionPane.showMessageDialog(null, "That was wrong, the correct answer was " +"morgan");
 }
 		// 9. Show them their current score
-
+JOptionPane.showMessageDialog(null, "Your score was " +score);
 	}
 
 	public void showNextImage() {
